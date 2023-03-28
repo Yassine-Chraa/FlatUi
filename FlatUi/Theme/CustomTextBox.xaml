@@ -12,7 +12,7 @@
                                          VerticalContentAlignment="Center" 
                                          Padding="5"
                                          Foreground="#cfcfcf"
-                                         BorderBrush="Transparent"
+                                         BorderThickness="0"
                                          Name="SearchBox"/>
                             <TextBlock IsHitTestVisible="True"
                                            Text="Search"

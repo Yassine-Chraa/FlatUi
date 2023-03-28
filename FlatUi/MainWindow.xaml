@@ -4,19 +4,24 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlatUi"
+        xmlns:viewModel="clr-namespace:FlatUi.MVVM.ViewModel" 
         mc:Ignorable="d"
         Height="600"
         Width="920"
         WindowStyle="None"
-        ResizeMode="NoResize"
+        ResizeMode="CanResize"
         Background="Transparent"
         AllowsTransparency="True"
         >
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
     <Border Background="#00235B" CornerRadius="20">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="193*"></ColumnDefinition>
+                <ColumnDefinition Width="167*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="75"></RowDefinition>
@@ -27,18 +32,17 @@
                 Mesro
             </TextBlock>
             <StackPanel Grid.Row="1">
-               <StackPanel Grid.Row="1">
+                <StackPanel Grid.Row="1">
                     <RadioButton Content="Home" Foreground="White" FontSize="14" Height="50"
-                             Style="{StaticResource MenuButton}" Checked="RadioButton_Checked"></RadioButton>
+                             Style="{StaticResource MenuButton}" Checked="RadioButton_Checked" IsChecked="True" Command="{Binding HomeViewCommand}"></RadioButton>
                     <RadioButton Content="Discovery" Foreground="White" FontSize="14" Height="50"
-                             Style="{StaticResource MenuButton}"></RadioButton>
-                    <RadioButton Content="Featured" Foreground="White" FontSize="14" Height="50"
-                             Style="{StaticResource MenuButton}"></RadioButton>
+                             Style="{StaticResource MenuButton}" Command="{Binding DiscoverViewCommand}"></RadioButton>
                 </StackPanel>
             </StackPanel>
 
             <TextBox Grid.Column="1" Width="250"  HorizontalAlignment="Left" Style="{StaticResource CustomTextBox}"/>
-
+            <ContentControl Grid.Row="1" Grid.Column="1" Margin="10,10,10,10" Content="{Binding CurrentView}" Grid.ColumnSpan="2"/>
+           
         </Grid>
-    </Border> 
+    </Border>
 </Window>
